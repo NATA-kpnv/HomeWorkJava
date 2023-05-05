@@ -2,14 +2,14 @@ package homeWork2.utils;
 
 public class SortsUtils {
 
-    public static void sort(int[] arr) {
-        int n = arr.length;
+    public static void sort(int[] array) {
+        int n = array.length;
         for (int i = 0; i < n - 1; i++) {
-            for (int j = 0; j < n - i - 1; j++) {
-                if (arr[j] > arr[j + 1]) {
-                    int temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
+            for (int j = n - 1; j > i; j--) {
+                if (array[j - 1] > array[j]) {
+                    int tmp = array[j - 1];
+                    array[j - 1] = array[j];
+                    array[j] = tmp;
                 }
             }
         }
