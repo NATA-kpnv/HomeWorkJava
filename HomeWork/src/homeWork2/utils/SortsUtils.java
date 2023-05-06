@@ -18,12 +18,15 @@ public class SortsUtils {
     public static void shake(int[] arr) {
         int left = 0;
         int right = arr.length - 1;
-        while (left < right) {
+        int flag = 1;
+        while (left < right && flag > 0) {
+            flag = 0;
             for (int i = left; i < right; i++) {
                 if (arr[i] > arr[i + 1]) {
                     int temp = arr[i];
                     arr[i] = arr[i + 1];
                     arr[i + 1] = temp;
+                    flag = 1;
                 }
             }
             right--;
@@ -32,6 +35,7 @@ public class SortsUtils {
                     int temp = arr[i];
                     arr[i] = arr[i - 1];
                     arr[i - 1] = temp;
+                    flag = 1;
                 }
             }
             left++;
