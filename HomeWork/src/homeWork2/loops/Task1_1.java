@@ -19,7 +19,7 @@ public class Task1_1 {
             for (long i = 1; i <= n; i++) {
                 if (result > Long.MAX_VALUE / i) {
                     System.out.println("Переполнение!");
-                    System.out.println("Последний допустимый результа" + result);
+                    System.out.println("Последний допустимый резул2ьта" + result);
                     return;
                 }
                 result *= i;
