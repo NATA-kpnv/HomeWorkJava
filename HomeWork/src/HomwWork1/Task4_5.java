@@ -12,11 +12,15 @@ public class Task4_5 {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите букву или символ");
         char ch = scanner.next().charAt(0);
-        if (Character.isLetter(ch)) {
+
+        if (isLetter(ch)) {
             System.out.println("Введенный символ является буквой.");
         } else {
             System.out.println("Введенный символ не является буквой.");
         }
     }
 
+    public static boolean isLetter(char ch) {
+        return Character.isLetter(ch);
+    }
 }

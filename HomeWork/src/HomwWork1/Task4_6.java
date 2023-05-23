@@ -13,19 +13,22 @@ public class Task4_6 {
         System.out.println("Введите год");
         int year = scanner.nextInt();
 
+        if (isLeapYear(year)) {
+            System.out.println(year + " - високосный год");
+        } else {
+            System.out.println(year + " - не високосный год");
+        }
+    }
+
+    public static boolean isLeapYear(int year) {
+        Boolean year_366 = false;
         if (year % 400 == 0 && year % 100 != 0) {
             year_366 = true;
         } else if (year % 4 == 0 && year % 100 != 0) {
             year_366 = true;
         } else {
             year_366 = false;
-        } ;
-
-        if (year_366 == true) {
-            System.out.println(year + " - високосный год");
-        } else {
-            System.out.println(year + " - не високосный год");
         }
-        ;
+        return year_366;
     }
 }

@@ -13,19 +13,28 @@ public class Task4_4 {
         long bytes;
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Если перевести байты в килобайты введите 1, если наоборот введите любой другой символ");
+        System.out.print("Если перевести байты в килобайты введите 1, если наоборот введите любой другой символ: ");
         int choice = scanner.nextInt();
 
-        if (choice != 1){
-            System.out.print("Введите килобайты");
+        if (choice != 1) {
+            System.out.print("Введите килобайты: ");
             kilobytes = scanner.nextLong();
-            bytes = kilobytes * 1024;
-        }
-        else {
-            System.out.print("Введите байты");
+            bytes = convertKilobytesToBytes(kilobytes);
+        } else {
+            System.out.print("Введите байты: ");
             bytes = scanner.nextLong();
-            kilobytes = bytes / 1024;
+            kilobytes = convertBytesToKilobytes(bytes);
         }
-        System.out.println( bytes + " байт = " + kilobytes + " килобайт ");
+
+        System.out.println(bytes + " байт = " + kilobytes + " килобайт");
+    }
+
+    public static long convertKilobytesToBytes(long kilobytes) {
+        return kilobytes * 1024;
+    }
+
+    public static long convertBytesToKilobytes(long bytes) {
+        return bytes / 1024;
     }
 }
+

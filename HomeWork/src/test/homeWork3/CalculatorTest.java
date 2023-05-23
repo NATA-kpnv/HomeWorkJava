@@ -1,10 +1,11 @@
-package homeWork3.test;
+package test.homeWork3;
+
+import homeWork3.calcs.api.ICalculator;
+import homeWork3.calcs.simple.CalculatorWithMathCopy;
+import homeWork3.calcs.simple.CalculatorWithMathExtends;
+import homeWork3.calcs.simple.CalculatorWithOperator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import homeWork3.calcs.additional.*;
-import homeWork3.calcs.simple.*;
-import homeWork3.calcs.api.*;
-
 
 
 public class CalculatorTest {

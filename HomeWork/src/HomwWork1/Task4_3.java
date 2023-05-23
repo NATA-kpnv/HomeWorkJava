@@ -14,11 +14,16 @@ public class Task4_3 {
         System.out.println("Введите второе число");
         int num2 = scanner.nextInt();
 
-        if (num1 % num2 == 0) {
+        boolean isDivisible = checkDivisibility(num1, num2);
+
+        if (isDivisible) {
             System.out.println(num1 + " делится на " + num2 + " без остатка");
         } else {
             System.out.println(num1 + " не делится на " + num2 + " без остатка");
         }
     }
 
+    public static boolean checkDivisibility(int num1, int num2) {
+        return num1 % num2 == 0;
+    }
 }
