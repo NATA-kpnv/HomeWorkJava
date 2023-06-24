@@ -66,10 +66,11 @@ public class BooksSearch {
             }
 
             try {
-                 Charset сharset = Charset.forName("CP1251");
+                // Charset сharset = Charset.forName("CP1251");
                // Charset сharset = Charset.forName("Windows-1251");
+                Charset сharset = Charset.forName("Cp866");
                 scanner.nextLine();
-               // String content =  readFile(selectedFile.getPath(), StandardCharsets.UTF_8);
+
                  String content =  readFile(selectedFile.getPath(),  сharset );
 
                 System.out.print("Введите слово для поиска (0 для выбора другого файла): ");
