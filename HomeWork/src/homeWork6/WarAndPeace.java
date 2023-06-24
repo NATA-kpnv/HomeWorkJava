@@ -13,7 +13,7 @@ import java.nio.file.Paths;
 
 public class WarAndPeace {
     public static void main(String[] args) {
-        String content = null;
+         String content = null;
          String path = "HomeWork/src/homeWork6/books/Война и мир_книга.txt";
          //String path = "HomeWork/src/homeWork6/books/test.txt";
 
@@ -21,7 +21,8 @@ public class WarAndPeace {
         try {
             content = readFile(path, StandardCharsets.UTF_8);
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Ошибка при чтении файла") ;
+            e.printStackTrace() ;
         }
         if (content != null) {
 
