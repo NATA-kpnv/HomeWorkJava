@@ -1,0 +1,40 @@
+package files;
+
+import java.io.File;
+import java.util.Scanner;
+
+public class FilesinClass {
+    public static void main(String[] args) {
+        String pathRaw;
+        int fileCount = 0;
+        int folderCount = 0;
+        int txtCount = 0;
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите путь к папке:");
+        pathRaw = scanner.nextLine();
+        //String path = pathRaw.replace("\\", "/");
+        File folder = new File(pathRaw);
+
+        if (folder.exists() && folder.isDirectory()) {
+            File[] files = folder.listFiles();
+            for (File file : files) {
+                if (file.isFile()) {
+                    fileCount++;
+                    if (file.getName().endsWith(".txt")) {
+                        txtCount++;
+                    }
+                } else if (file.isDirectory()) {
+                    folderCount++;
+                }
+            }
+
+            System.out.println("Количество файлов: " + fileCount);
+            System.out.println("Количество папок: " + folderCount);
+            System.out.println("Количество txt файлов: " + txtCount);
+        } else {
+            System.out.println("Указанная папка не существует или не является директорией.");
+        }
+    }
+}
+
+

@@ -3,7 +3,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import HomwWork1.*;
 
-public class TestTask4 {
+public class  TestTask4 {
     @Test
     public void  task4_1() {
         int evenNum = 4;
