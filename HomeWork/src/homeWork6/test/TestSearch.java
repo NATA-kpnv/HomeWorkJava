@@ -58,4 +58,13 @@ public class TestSearch {
         long count = searchEngineRoot.search(text, word);
         Assertions.assertEquals(1, count);
     }
+
+    @Test
+    public void testSearchClass() {
+        ISearchEngine searchEngine = new ClassEasySearch();
+        String text = "Мама мыла мыламылом мыла,раму мылом";
+        String word = "мыла";
+        long count = searchEngine.search(text, word);
+        Assertions.assertEquals(2, count);
+    }
 }
