@@ -13,6 +13,8 @@ import java.util.*;
 import java.util.concurrent.*;
 import java.util.stream.Collectors;
 
+import static homeWork6.BooksSearch.readFile;
+
 public class SearchWithMultithreading {
 
     private static final int COUNT_THREAD = 3;
@@ -48,7 +50,23 @@ public class SearchWithMultithreading {
             if (file.isFile() & file.getName().toLowerCase().endsWith(".txt")) {
                 System.out.println("Поиск в файле" + file.getName() + "слова " + searchWord);
                 //нужно через лямбду, но пока так
-                Callable<String> callableTask = new MyCallable(file, searchWord);
+                //  Callable<String> callableTask = new MyCallable(file, searchWord);
+                //лямбда
+                Callable<String> callableTask = () -> {
+                    StringBuilder resultBuilder = new StringBuilder();
+                    String content;
+                    try {
+                        Charset сharset = Charset.forName("Cp866");
+                        content = readFile(file.getPath(), сharset);
+                        ISearchEngine searchEngine = new ClassEasySearch();
+                        long count = searchEngine.search(content, searchWord);
+                        resultBuilder.append(file.getName()).append(" - ").append(searchWord).append(" - ").append(count);
+                    } catch (IOException e) {
+                        resultBuilder.append(file.getName()).append(" - ").append("Ошибка при чтении файла"); //append("\n")
+                        return resultBuilder.toString();
+                    }
+                    return resultBuilder.toString();
+                };
                 //добавляем в пул потоков
                 Future<String> future = executor.submit(callableTask);
                 //добавить Future в список, чтобы потом получить значения
@@ -76,11 +94,17 @@ public class SearchWithMultithreading {
             System.out.println("Ошибка при записи результата");
         }
 
+        try {
+            String content = readFile(resultFileName,  Charset.forName("UTF-8"));
+            System.out.println(content);
+        } catch (IOException e) {
+            System.out.println("Ошибка при чтении результирующего файла");
+        }
     }
 
     private static void saveResult(List<String> resultList, String fileName) throws CreateFileException {
         File file = new File(fileName);
-      //  String listString = String.join(", ", resultList);
+        //  String listString = String.join(", ", resultList);
         String listString = resultList.stream()
                 .collect(Collectors.joining(",\n"));
         try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file, true), StandardCharsets.UTF_8))) {
